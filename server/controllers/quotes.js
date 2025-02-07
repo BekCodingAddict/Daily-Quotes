@@ -1,7 +1,11 @@
 const Quote = require("../models/quote");
 
 function getQuotes(req, res) {
-  res.render("src/pages/quotes", { pageTitle: "📜Quotes" });
+  Quote.findAll()
+    .then((quotes) => {
+      res.render("src/pages/quotes", { pageTitle: "📜Quotes", quotes: quotes });
+    })
+    .catch((error) => console.log("Failed to Fetch All Quotes! Error:", error));
 }
 
 function getAddQuote(req, res) {

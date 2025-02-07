@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, "../client")));
 app.use(publicRoutes);
 app.use(quotesRoute);
 sequelize
-  .sync({ force: true })
+  .sync()
   .then((result) => {
     // SERVER RUNNING
 
