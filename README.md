@@ -21,6 +21,32 @@ The Daily Quotes Full Stack Node.js App is likely a web application where users 
 - JWT (JSON Web Tokens) – For secure authentication.
 - Bcrypt.js - For Hashing
 
+## 📂 Full-Stack App Folder Structure
+```bash
+📦 daily-quotes-app
+ ┣ 📂 client             # (Frontend - React or Next.js)
+ ┃ ┣ 📂 public           # Static assets (images, icons, fonts)
+ ┃ ┣ 📂 src
+ ┃ ┃ ┣ 📂 pages          # Pages (if using Next.js)
+ ┃ ┃ ┣ 📂 services       # API calls (e.g., axios fetch requests)
+ ┃ ┃ ┣ 📂 styles         # CSS, Tailwind, Styled Components
+ ┃ ┃ ┣ 📂 utils          # Helper functions (e.g., date format, text truncation)
+ ┃ ┃ ┣ 📜 index.js
+ ┣ 📂 server             # (Backend - Node.js + Express)
+ ┃ ┣ 📂 config           # Database & environment configurations
+ ┃ ┣ 📂 controllers      # Business logic for API routes
+ ┃ ┣ 📂 models           # Database models (MongoDB, PostgreSQL, etc.)
+ ┃ ┣ 📂 routes           # API endpoints (e.g., /api/quotes, /api/auth)
+ ┃ ┣ 📂 middleware       # Auth middleware, error handling
+ ┃ ┣ 📂 utils            # Helper functions (e.g., JWT generation)
+ ┃ ┣ 📜 server.js        # Main Express app entry file
+ ┣ 📜 .env               # Environment variables
+ ┣ 📜 .gitignore         # Ignore unnecessary files
+ ┣ 📜 README.md          # Documentation
+ ┣ 📜 package.json       # Backend dependencies
+```
+
+
 ## 🎯 Possible Future Enhancements 
 - Add AI-generated quotes using OpenAI’s API.
 - Build a mobile version with React Native.
