@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= pageTitle %></title>
+    <link rel="stylesheet" href="src/styles/quotes.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">QuotesApp</div>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Saved</a>
+        <a href="#">Profile</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <!-- User Profile Section -->
+      <aside class="profile-section">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+          alt="User Profile"
+        />
+        <h3>John Doe</h3>
+        <p>@johndoe</p>
+      </aside>
+
+      <!-- Quotes Feed -->
+      <section class="feed">
+        <h2>Quotes Feed</h2>
+
+        <div class="quote-card">
+          <p class="quote-text">
+            "The only limit to our realization of tomorrow is our doubts of
+            today."
+          </p>
+          <p class="quote-author">- Franklin D. Roosevelt</p>
+        </div>
+
+        <div class="quote-card">
+          <p class="quote-text">
+            "Success is not final, failure is not fatal: it is the courage to
+            continue that counts."
+          </p>
+          <p class="quote-author">- Winston Churchill</p>
+        </div>
+
+        <div class="quote-card">
+          <p class="quote-text">
+            "Do what you can, with what you have, where you are."
+          </p>
+          <p class="quote-author">- Theodore Roosevelt</p>
+        </div>
+      </section>
+
+      <!-- Saved Quotes Section -->
+      <aside class="saved-quotes">
+        <h2>Saved Quotes</h2>
+        <p>"Be yourself; everyone else is already taken." - Oscar Wilde</p>
+        <p>"Happiness depends upon ourselves." - Aristotle</p>
+      </aside>
+    </main>
+
+    <!-- Recent Activity Section -->
+    <section class="recent-activity">
+      <h2>Recent Activity</h2>
+      <ul>
+        <li><b>@alice</b> posted a new quote</li>
+        <li><b>@mark23</b> liked a quote</li>
+        <li><b>@sarah_j</b> saved a quote</li>
+      </ul>
+    </section>
+  </body>
+</html>
