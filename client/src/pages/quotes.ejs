@@ -6,55 +6,52 @@
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="src/styles/quotes.css" />
   </head>
+
   <body>
-    <header>
-      <div class="logo">Daily Quotes</div>
-      <nav>
-        <a href="#">Home</a>
-        <a href="#">Saved</a>
-        <a href="#">Profile</a>
-      </nav>
-    </header>
-
-    <main class="container">
-      <!-- User Profile Section -->
-      <aside class="profile-section">
-        <img
-          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-          alt="User Profile"
-        />
-        <h3>John Doe</h3>
-        <p>@johndoe</p>
-      </aside>
-
-      <!-- Quotes Feed -->
-      <section class="feed">
-        <h2>Quotes Feed</h2>
-
-        <% quotes.forEach(quote=>{ %>
-        <div class="quote-card">
-          <p class="quote-text"><%=quote.quote %></p>
-          <p class="quote-author">- <%= quote.author %></p>
-        </div>
-        <% }) %>
-      </section>
-
-      <!-- Saved Quotes Section -->
-      <aside class="saved-quotes">
-        <h2>Saved Quotes</h2>
-        <p>"Be yourself; everyone else is already taken." - Oscar Wilde</p>
-        <p>"Happiness depends upon ourselves." - Aristotle</p>
-      </aside>
-    </main>
-
-    <!-- Recent Activity Section -->
-    <section class="recent-activity">
-      <h2>Recent Activity</h2>
-      <ul>
-        <li><b>@alice</b> posted a new quote</li>
-        <li><b>@mark23</b> liked a quote</li>
-        <li><b>@sarah_j</b> saved a quote</li>
-      </ul>
-    </section>
+    <aside class="sidebar">
+      <div class="logos">
+        <a href="/">
+          <img
+            id="icon"
+            src="../../public/icon-light.png"
+            width="50"
+            height="50"
+            alt="Quote Icon"
+          />
+        </a>
+        <a href="/">
+          <img
+            src="../../public/quotes-light.png"
+            alt="Quotes Logo"
+            width="140"
+            height="40"
+        /></a>
+      </div>
+      <div class="navigation">
+        <ul>
+          <li>Home</li>
+          <li>Search</li>
+          <li>Explore</li>
+          <li>Message</li>
+          <li>Notification</li>
+          <li>Create</li>
+          <li>Activity</li>
+          <li>Profile</li>
+        </ul>
+      </div>
+      <div class="more">
+        <ul>
+          <li>Morxzxze</li>
+        </ul>
+      </div>
+    </aside>
+    <article class="content">
+      <% quotes.forEach(quote=>{ %>
+      <div>
+        <p><%= quote.quote %></p>
+        <h6><%= quote.author %></h6>
+      </div>
+      <% }) %>
+    </article>
   </body>
 </html>

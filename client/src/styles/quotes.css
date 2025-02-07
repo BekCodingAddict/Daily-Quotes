@@ -8,148 +8,86 @@
   font-family: "Poppins", sans-serif;
 }
 
-body {
-  background: #f5f5f5;
-  color: #333;
-}
-
-/* Header */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 10%;
-  background: #667eea;
-  color: white;
-}
-
-header .logo {
-  font-size: 22px;
-  font-weight: 600;
-}
-
-header nav a {
-  color: white;
+a {
   text-decoration: none;
-  margin-left: 20px;
-  font-weight: 500;
+  color: inherit;
 }
 
-header nav a:hover {
-  text-decoration: underline;
+body {
+  height: 100dvh;
+  display: grid;
+  grid-template-areas: "sidebar", "content";
+  gap: 1rem;
 }
 
-/* Main Container */
-.container {
+.sidebar {
+  grid-area: sidebar;
+  padding: 2rem;
+  border-right: 1px solid gray;
+}
+
+.sidebar .navigation {
   display: flex;
-  max-width: 1000px;
-  margin: 20px auto;
-  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
-/* Profile Section */
-.profile-section {
-  width: 20%;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.profile-section img {
-  width: 80px;
-  border-radius: 50%;
-}
-
-.profile-section h3 {
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-/* Quotes Feed */
-.feed {
-  width: 60%;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.feed h2 {
-  margin-bottom: 15px;
-}
-
-.quote-card {
-  background: #f1f1f1;
-  padding: 15px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.quote-text {
-  font-style: italic;
-  font-size: 16px;
-}
-
-.quote-author {
-  text-align: right;
-  margin-top: 5px;
-  font-weight: bold;
-  color: #555;
-}
-
-/* Saved Quotes */
-.saved-quotes {
-  width: 20%;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.saved-quotes h2 {
-  margin-bottom: 10px;
-}
-
-.saved-quotes p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 10px;
-}
-
-/* Recent Activity */
-.recent-activity {
-  max-width: 1000px;
-  margin: 20px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.recent-activity h2 {
-  margin-bottom: 10px;
-}
-
-.recent-activity ul {
+.sidebar .navigation ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: start;
   list-style: none;
 }
 
-.recent-activity ul li {
-  font-size: 14px;
-  padding: 5px 0;
+.sidebar .more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
+.sidebar .more ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: center;
+  align-items: start;
+  list-style: none;
+}
+
+.content {
+  grid-area: content;
+  background-color: azure;
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  body {
+    grid-template-columns: 1fr 5fr;
+    grid-template-areas: "sidebar content";
   }
-  .profile-section,
-  .feed,
-  .saved-quotes {
-    width: 90%;
+
+  .logos #icon {
+    display: none;
   }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
 }
