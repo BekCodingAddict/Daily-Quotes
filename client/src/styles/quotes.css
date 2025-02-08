@@ -102,18 +102,77 @@ body {
   list-style: none;
 }
 
+/* MAIN CONTENTS */
 .content {
   grid-area: content;
-  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
 }
 
+.quote-cart {
+  width: 100%;
+  background-color: azure;
+  padding: 0 0.5rem 0 0.5rem;
+  position: relative;
+  margin-top: 6rem;
+  border-bottom: 1px solid gray;
+}
+
+.quote-cart .cart-header {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cart-header .user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-header .option {
+  cursor: pointer;
+}
+
+.quote-cart .quote-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 1rem;
+}
+
+/* .quote-main h5 {
+  position: absolute;
+  bottom: 3rem;
+  right: 1rem;
+} */
+
+.quote-cart .quote-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quote-cart .likes {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* SUGGESTED USER */
 .suggested {
   grid-area: suggested;
-  background-color: antiquewhite;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  border-left: 1px solid gray;
 }
 
 .suggested .my-profile {
@@ -187,23 +246,148 @@ body {
   font-weight: 700;
 }
 
+.profile-image {
+  width: 30px;
+  height: 30px;
+}
+
+.option-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* MOBILE UI */
+.movile-header {
+  display: block;
+}
+
+.mobile-nav {
+  display: none;
+}
+
 /* MEDIA QUERY */
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-}
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-}
+/* @media only screen and (min-width: 768px) {
+} */
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (max-width: 1024px) {
+  body {
+    grid-template-columns: 16em auto;
+    grid-template-areas: "sidebar content";
+  }
+  .suggested {
+    display: none;
+  }
+
+  .sidebar .logos {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .sidebar .logos a:first-child {
+    display: none;
+  }
+  .sidebar .logos a:last-child {
+    display: flex;
+  }
+
+  .navigation a > p {
+    display: block;
+  }
+  .suggested {
+    display: none;
+  }
+
+  .mobile-header {
+    display: none;
+  }
+  .mobile-nav {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  body {
+    grid-template-columns: 5rem auto;
+    grid-template-areas: "sidebar content";
+  }
+  .sidebar .logos {
+    justify-content: center;
+    align-items: center;
+  }
+  .sidebar .logos a:first-child {
+    display: flex;
+  }
+  .sidebar .logos a:last-child {
+    display: none;
+  }
+
+  .navigation a > p {
+    display: none;
+  }
+  .suggested {
+    display: none;
+  }
+
+  .mobile-header {
+    display: none;
+  }
+  .mobile-nav {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .content {
+    width: 100%;
+  }
+
+  .content .quote-cart {
+    margin-top: 1rem;
+  }
+
+  .sidebar,
+  .suggested {
+    display: none !important;
+  }
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+    padding: 1rem;
+    width: 100%;
+  }
+  .mobile-nav {
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
   body {
     grid-template-columns: 16em auto 18rem;
     grid-template-areas: "sidebar content suggested";
   }
-}
+  .suggested {
+    display: flex;
+  }
 
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
+  .mobile-header {
+    display: none;
+  }
+  .mobile-nav {
+    display: none;
+  }
 }

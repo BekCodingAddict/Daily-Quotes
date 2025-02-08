@@ -8,12 +8,40 @@
   </head>
 
   <body>
+    <header class="mobile-header">
+      <div class="">
+        <a href="/">
+          <img
+            src="../../public/quotes-light.png"
+            alt="Quotes Logo"
+            width="140"
+            height="40"
+        /></a>
+      </div>
+      <div style="display: flex; flex-direction: row; gap: 2rem">
+        <form>
+          <input
+            type="text"
+            name="search"
+            placeholder="Search"
+            style="
+              padding: 0.4rem;
+              background-color: rgba(184, 184, 184, 0.3);
+              border: none;
+              border-radius: 5px;
+            "
+          />
+        </form>
+        <img class="option-icon" src="../../public/bell.png" />
+      </div>
+    </header>
+
     <aside class="sidebar">
       <div class="logos">
         <a href="/">
           <img
             id="icon"
-            src="../../public/icon-light.png"
+            src="../../public/icon-dark.png"
             width="50"
             height="50"
             alt="Quote Icon"
@@ -30,51 +58,119 @@
       <div class="navigation">
         <ul>
           <li class="<%= activePage==='home' && 'active-link' %>">
-            <a href="home"><img src="../../public/home.png" /> Home</a>
+            <a href="home"
+              ><img src="../../public/home.png" />
+              <p>Home</p></a
+            >
           </li>
           <li>
-            <a href="search"><img src="../../public/search .png" />Search</a>
+            <a href="search"
+              ><img src="../../public/search .png" />
+              <p>Search</p></a
+            >
           </li>
           <li>
             <a href="exprore"
-              ><img src="../../public/navigation.png" />Explore</a
+              ><img src="../../public/navigation.png" />
+              <p>Explore</p></a
             >
           </li>
           <li>
-            <a href="message"> <img src="../../public/message.png" />Message</a>
+            <a href="message">
+              <img src="../../public/message.png" />
+              <p>Message</p></a
+            >
           </li>
           <li>
             <a href="notification">
-              <img src="../../public/bell.png" />Notification</a
+              <img src="../../public/bell.png" />
+              <p>Notification</p></a
             >
           </li>
           <li>
-            <a href="create"> <img src="../../public/adding.png" />Create</a>
+            <a href="create">
+              <img src="../../public/adding.png" />
+              <p>Create</p></a
+            >
           </li>
           <li>
-            <a href="activity"> <img src="../../public/home.png" />Activity</a>
+            <a href="activity">
+              <img src="../../public/home.png" />
+              <p>Activity</p></a
+            >
           </li>
           <li>
-            <a href="profile"> <img src="../../public/profile.png" />Profile</a>
+            <a href="profile">
+              <img src="../../public/profile.png" />
+              <p>Profile</p></a
+            >
           </li>
           <li>
-            <a href="more"> <img src="../../public/menu.png" />More</a>
+            <a href="more">
+              <img src="../../public/menu.png" />
+              <p>More</p></a
+            >
           </li>
         </ul>
       </div>
     </aside>
 
     <article class="content">
-      <div class="quote-cart">
-        <div class="cart-header"></div>
-        <div class="quote-main"></div>
-        <div class="quote-footer"></div>
-        <div class="likes"></div>
-      </div>
       <% quotes.forEach(quote=>{ %>
-      <div>
-        <p><%= quote.quote %></p>
-        <h6><%= quote.author %></h6>
+      <div class="quote-cart">
+        <div class="cart-header">
+          <div class="user-info">
+            <img class="profile-image" src="../../public/profile.png" />
+            <p class="user-name">user-name <span>*</span></p>
+            <p>1w</p>
+          </div>
+          <div class="option">
+            <img
+              class="option-icon"
+              src="../../public/option.png"
+              alt="Option"
+            />
+          </div>
+        </div>
+        <div class="quote-main">
+          <p><%= quote.quote %></p>
+          <h5><span>- </span> <%=quote.author %></h5>
+        </div>
+        <div class="quote-footer">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              flex-direction: row;
+              gap: 0.5rem;
+            "
+          >
+            <img
+              class="option-icon"
+              src="../../public/unlike.png"
+              alt="Unlike"
+            />
+            <img
+              class="option-icon"
+              src="../../public/comment.png"
+              alt="Commment"
+            />
+            <img class="option-icon" src="../../public/share.png" alt="Share" />
+          </div>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              flex-direction: row;
+              gap: 0.5rem;
+            "
+          >
+            <img class="option-icon" src="../../public/save.png" alt="Unlike" />
+          </div>
+        </div>
+        <div class="likes">
+          <p><span>1212</span> likes</p>
+        </div>
       </div>
       <% }) %>
     </article>
@@ -135,5 +231,7 @@
         </ul>
       </div>
     </aside>
+
+    <nav class="mobile-nav">Mobile nav</nav>
   </body>
 </html>
