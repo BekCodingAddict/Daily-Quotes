@@ -112,7 +112,6 @@ body {
 
 .quote-cart {
   width: 100%;
-  background-color: azure;
   padding: 0 0.5rem 0 0.5rem;
   position: relative;
   margin-top: 6rem;
@@ -124,6 +123,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0.5rem;
 }
 
 .cart-header .user-info {
@@ -145,6 +145,7 @@ body {
   padding-top: 1rem;
   padding-bottom: 1rem;
   gap: 1rem;
+  background-color: azure;
 }
 
 /* .quote-main h5 {
@@ -158,11 +159,13 @@ body {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 0.5rem;
 }
 
 .quote-cart .likes {
   font-size: 0.8rem;
   margin-top: 0.5rem;
+  padding: 0 0.5rem;
 }
 
 /* SUGGESTED USER */
@@ -352,6 +355,7 @@ body {
 
   .content {
     width: 100%;
+    margin-top: 4rem;
   }
 
   .content .quote-cart {
@@ -369,9 +373,32 @@ body {
     border-bottom: 1px solid gray;
     padding: 1rem;
     width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: aliceblue;
   }
   .mobile-nav {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    border-top: 1px solid gray;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    background-color: aliceblue;
+  }
+
+  .mobile-nav a {
+    padding: 1rem;
+  }
+
+  .mobile-nav a:hover {
+    background-color: rgba(184, 184, 184, 0.3);
+    border-radius: 5px;
   }
 }
 
