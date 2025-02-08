@@ -20,10 +20,22 @@ body {
   gap: 1rem;
 }
 
+/* SIDEBAR */
 .sidebar {
   grid-area: sidebar;
-  padding: 2rem;
+  padding: 0.5rem;
   border-right: 1px solid gray;
+}
+
+.sidebar .logos {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-top: 2rem;
+}
+
+.sidebar .logos a:first-child {
+  display: none;
 }
 
 .sidebar .navigation {
@@ -36,10 +48,36 @@ body {
 .sidebar .navigation ul {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
   justify-content: center;
   align-items: start;
   list-style: none;
+  width: 100%;
+}
+
+.navigation ul li {
+  /* display: flex;
+  align-items: end;
+  justify-content: start; */
+  gap: 1rem;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.5rem 2rem 0.8rem 1.2rem;
+}
+
+.navigation ul li a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navigation ul li:hover {
+  background-color: rgba(184, 184, 184, 0.3);
+  border-radius: 0.4rem;
+}
+
+.navigation ul li img {
+  width: 30px;
+  height: 30px;
 }
 
 .sidebar .more {
@@ -63,11 +101,7 @@ body {
   background-color: azure;
 }
 
-.logos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* MEDIA QUERY */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
 }
@@ -79,12 +113,8 @@ body {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   body {
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 16em 5fr;
     grid-template-areas: "sidebar content";
-  }
-
-  .logos #icon {
-    display: none;
   }
 }
 
