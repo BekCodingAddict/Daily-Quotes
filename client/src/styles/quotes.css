@@ -13,10 +13,15 @@ a {
   color: inherit;
 }
 
+.active-link {
+  background-color: rgba(184, 184, 184, 0.3);
+  border-radius: 0.4rem;
+}
+
 body {
   height: 100dvh;
   display: grid;
-  grid-template-areas: "sidebar", "content";
+  grid-template-areas: "sidebar", "content", "suggested";
   gap: 1rem;
 }
 
@@ -70,7 +75,8 @@ body {
   gap: 1rem;
 }
 
-.navigation ul li:hover {
+.navigation ul li:hover,
+.navigation ul li:active {
   background-color: rgba(184, 184, 184, 0.3);
   border-radius: 0.4rem;
 }
@@ -101,6 +107,86 @@ body {
   background-color: azure;
 }
 
+.suggested {
+  grid-area: suggested;
+  background-color: antiquewhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.suggested .my-profile {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 2rem;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.5rem 2rem 0.8rem 1.2rem;
+  border-bottom: 1px solid gray;
+}
+
+.suggested .my-profile a {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.suggested .my-profile a img {
+  width: 30px;
+  height: 30px;
+}
+
+.suggested .suggested-users {
+  display: flex;
+}
+
+.suggested-users ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  list-style: none;
+  width: 100%;
+}
+
+.suggested-users ul li {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.5rem 2rem 0.8rem 1.2rem;
+  font-size: 0.8rem;
+}
+
+.suggested-users ul li a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.suggested-users ul li a img {
+  width: 30px;
+  height: 30px;
+}
+
+.suggested-users ul li:hover {
+  background-color: rgba(184, 184, 184, 0.3);
+  border-radius: 0.4rem;
+}
+
+.log-out {
+  color: rgb(0, 140, 255);
+  font-weight: 600;
+}
+
+.user-name {
+  font-weight: 700;
+}
+
 /* MEDIA QUERY */
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -113,8 +199,8 @@ body {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   body {
-    grid-template-columns: 16em 5fr;
-    grid-template-areas: "sidebar content";
+    grid-template-columns: 16em auto 18rem;
+    grid-template-areas: "sidebar content suggested";
   }
 }
 

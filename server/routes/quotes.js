@@ -5,7 +5,7 @@ const {
   postNewQuote,
 } = require("../controllers/quotes");
 
-router.get("/quotes", getQuotes);
+router.get("/home", getQuotes);
 router.get("/add-quote", getAddQuote);
 router.post("/add-new-quote", postNewQuote);
 

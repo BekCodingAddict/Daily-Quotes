@@ -29,7 +29,7 @@
       </div>
       <div class="navigation">
         <ul>
-          <li>
+          <li class="<%= activePage==='home' && 'active-link' %>">
             <a href="home"><img src="../../public/home.png" /> Home</a>
           </li>
           <li>
@@ -63,7 +63,14 @@
         </ul>
       </div>
     </aside>
+
     <article class="content">
+      <div class="quote-cart">
+        <div class="cart-header"></div>
+        <div class="quote-main"></div>
+        <div class="quote-footer"></div>
+        <div class="likes"></div>
+      </div>
       <% quotes.forEach(quote=>{ %>
       <div>
         <p><%= quote.quote %></p>
@@ -71,5 +78,62 @@
       </div>
       <% }) %>
     </article>
+
+    <aside class="suggested">
+      <div class="my-profile">
+        <a href="profile">
+          <img src="../../public/profile.png" />
+          <div>
+            <p class="user-name">user-name</p>
+            <p>Name</p>
+          </div>
+        </a>
+        <a class="log-out" href="log-out">Log out</a>
+      </div>
+      <div class="suggested-users">
+        <ul>
+          <li>
+            <a href="profile">
+              <img src="../../public/profile.png" />
+              <div>
+                <p class="user-name">user-name</p>
+                <p>Name</p>
+              </div></a
+            >
+            <p class="log-out">Follow</p>
+          </li>
+          <li>
+            <a href="profile">
+              <img src="../../public/profile.png" />
+              <div>
+                <p class="user-name">user-name</p>
+                <p>Name</p>
+              </div></a
+            >
+            <p class="log-out">Follow</p>
+          </li>
+          <li>
+            <a href="profile">
+              <img src="../../public/profile.png" />
+              <div>
+                <p class="user-name">user-name</p>
+                <p>Name</p>
+              </div></a
+            >
+            <p class="log-out">Follow</p>
+          </li>
+          <li>
+            <a href="profile">
+              <img src="../../public/profile.png" />
+              <div>
+                <p class="user-name">user-name</p>
+                <p>Name</p>
+              </div></a
+            >
+            <p class="log-out">Follow</p>
+          </li>
+        </ul>
+      </div>
+    </aside>
   </body>
 </html>

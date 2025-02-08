@@ -3,7 +3,11 @@ const Quote = require("../models/quote");
 function getQuotes(req, res) {
   Quote.findAll()
     .then((quotes) => {
-      res.render("src/pages/quotes", { pageTitle: "📜Quotes", quotes: quotes });
+      res.render("src/pages/quotes", {
+        pageTitle: "📜Quotes",
+        activePage: "home",
+        quotes: quotes,
+      });
     })
     .catch((error) => console.log("Failed to Fetch All Quotes! Error:", error));
 }
