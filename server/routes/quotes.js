@@ -4,8 +4,9 @@ const {
   getAddQuote,
   postNewQuote,
 } = require("../controllers/quotes");
+const authenticatedUser = require("../middleware/authMiddleware");
 
-router.get("/home", getQuotes);
+router.get("/home", authenticatedUser, getQuotes);
 router.get("/add-quote", getAddQuote);
 router.post("/add-new-quote", postNewQuote);
 

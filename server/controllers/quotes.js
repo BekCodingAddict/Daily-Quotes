@@ -1,15 +1,30 @@
+const { where } = require("sequelize");
 const Quote = require("../models/quote");
+const User = require("../models/user");
 
-function getQuotes(req, res) {
-  Quote.findAll()
-    .then((quotes) => {
-      res.render("src/pages/quotes", {
-        pageTitle: "📜Quotes",
-        activePage: "home",
-        quotes: quotes,
-      });
-    })
-    .catch((error) => console.log("Failed to Fetch All Quotes! Error:", error));
+async function getQuotes(req, res) {
+  const quotes = await Quote.findAll({
+    where: { userId: req.user.userId },
+  });
+  const user = await User.findOne({ where: { id: req.user.userId } });
+
+  return res.render("src/pages/quotes", {
+    pageTitle: "📜Quotes",
+    activePage: "home",
+    quotes: quotes,
+    user: user,
+  });
+
+  // Quote.findAll()
+  //   .then((quotes) => {
+  //     res.render("src/pages/quotes", {
+  //       pageTitle: "📜Quotes",
+  //       activePage: "home",
+  //       quotes: quotes,
+  //       user: req.user,
+  //     });
+  //   })
+  //   .catch((error) => console.log("Failed to Fetch All Quotes! Error:", error));
 }
 
 function getAddQuote(req, res) {

@@ -25,3 +25,5 @@ closeBtn.addEventListener("click", () => {
 //   const confirmed = confirm("Do you want to create this quote?");
 //   if(confirmed)
 // }
+
+// LOGOUT LOGIC

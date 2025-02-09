@@ -67,14 +67,22 @@ async function signInUser(req, res) {
       expiresIn: "1h",
     });
 
-    const quotes = await Quote.findAll({ where: { userId: existUser.id } });
-    return res.render("src/pages/quotes", {
-      pageTitle: "📜Quotes",
-      activePage: "home",
-      message: "User logged in successfully!",
-      quotes: quotes,
-      token: token,
+    // Set token as an HTTP-only cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: true, // Set true in production (HTTPS)
+      maxAge: 3600000, //1 hour
     });
+
+    // const quotes = await Quote.findAll({ where: { userId: existUser.id } });
+    // return res.render("src/pages/quotes", {
+    //   pageTitle: "📜Quotes",
+    //   activePage: "home",
+    //   message: "User logged in successfully!",
+    //   quotes: quotes,
+    //   token: token,
+    // });
+    return res.redirect("/home");
   } catch (error) {
     console.log(error);
     return res.render("src/pages/error", {
@@ -84,4 +92,9 @@ async function signInUser(req, res) {
   }
 }
 
-module.exports = { signUpNewUser, signInUser };
+function logout(req, res) {
+  res.clearCookie("token");
+  res.redirect("/sign-in");
+}
+
+module.exports = { signUpNewUser, signInUser, logout };

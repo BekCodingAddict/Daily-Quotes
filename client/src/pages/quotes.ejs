@@ -6,10 +6,6 @@
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="src/styles/quotes.css" />
     <link rel="stylesheet" href="src/styles/addQuoteModal.css" />
-    <script>
-      const token = "<%= token %>";
-      localStorage.setItem("authToken", token);
-    </script>
   </head>
 
   <body>
@@ -192,7 +188,7 @@
             <p>Name</p>
           </div>
         </a>
-        <a class="log-out" href="/">Log out</a>
+        <a class="log-out" href="/logout">Log out</a>
       </div>
       <div class="suggested-users">
         <ul>

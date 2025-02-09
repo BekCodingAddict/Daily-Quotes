@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const sequelize = require("./utils/database");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 
 const app = express();
@@ -17,6 +18,7 @@ app.set("views", path.join(__dirname, "../client"));
 
 // EXPRESS USES
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "../client")));
 
 app.use(publicRoutes);
