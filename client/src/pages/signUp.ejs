@@ -10,9 +10,9 @@
     <div class="container">
       <div class="signup-box">
         <h2>Sign Up</h2>
-        <form action="/user-sign-up" method="POST">
+        <form onsubmit="resetForm()" action="/user-sign-up" method="POST">
           <div class="input-group">
-            <input type="text" name="userName" required />
+            <input type="text" name="fullName" required />
             <label>Full Name</label>
           </div>
           <div class="input-group">

@@ -9,6 +9,15 @@ const Quote = sequelize.define("quotes", {
     allowNull: false,
     primaryKey: true,
   },
+  userId: {
+    type: Sequelize.INTEGER,
+    allowNull: false,
+    reference: {
+      model: "users",
+      key: "id",
+    },
+    onDelete: "CASCADE",
+  },
   quote: Sequelize.STRING,
   author: Sequelize.STRING,
   imageUrl: {

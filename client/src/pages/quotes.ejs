@@ -6,6 +6,10 @@
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="src/styles/quotes.css" />
     <link rel="stylesheet" href="src/styles/addQuoteModal.css" />
+    <script>
+      const token = "<%= token %>";
+      localStorage.setItem("authToken", token);
+    </script>
   </head>
 
   <body>
@@ -118,7 +122,7 @@
     </aside>
 
     <article class="content">
-      <% quotes.forEach(quote=>{ %>
+      <% if(quotes && quotes.length>0){ %> <% quotes.forEach(quote=>{ %>
       <div class="quote-cart">
         <div class="cart-header">
           <div class="user-info">
@@ -174,7 +178,9 @@
           <p><span>1212</span> likes</p>
         </div>
       </div>
-      <% }) %>
+      <% }) %> <% }else{ %>
+      <div>No Quote Yet</div>
+      <% } %>
     </article>
 
     <aside class="suggested">
@@ -186,7 +192,7 @@
             <p>Name</p>
           </div>
         </a>
-        <a class="log-out" href="log-out">Log out</a>
+        <a class="log-out" href="/">Log out</a>
       </div>
       <div class="suggested-users">
         <ul>

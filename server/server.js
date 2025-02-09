@@ -8,7 +8,8 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 const publicRoutes = require("./routes/public");
-const quotesRoute = require("./routes/quotes");
+const quotesRoutes = require("./routes/quotes");
+const userRoutes = require("./routes/user");
 
 // SETTERS
 app.set("view engine", "ejs");
@@ -19,7 +20,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "../client")));
 
 app.use(publicRoutes);
-app.use(quotesRoute);
+app.use(quotesRoutes);
+app.use(userRoutes);
 sequelize
   .sync()
   .then((result) => {
