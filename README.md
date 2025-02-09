@@ -24,13 +24,14 @@ The Daily Quotes Full Stack Node.js App is likely a web application where users 
 ## 📂 Full-Stack App Folder Structure
 ```bash
 📦 daily-quotes-app
- ┣ 📂 client             # (Frontend - React or Next.js)
+ ┣ 📂 client             # (Frontend - Simply EJS)
  ┃ ┣ 📂 public           # Static assets (images, icons, fonts)
  ┃ ┣ 📂 src
- ┃ ┃ ┣ 📂 pages          # Pages (if using Next.js)
+ ┃ ┃ ┣ 📂 pages          # Pages 
  ┃ ┃ ┣ 📂 services       # API calls (e.g., axios fetch requests)
  ┃ ┃ ┣ 📂 styles         # CSS, Tailwind, Styled Components
  ┃ ┃ ┣ 📂 utils          # Helper functions (e.g., date format, text truncation)
+ ┃ ┃ ┣ 📜 index.ejs
  ┃ ┃ ┣ 📜 index.js
  ┣ 📂 server             # (Backend - Node.js + Express)
  ┃ ┣ 📂 config           # Database & environment configurations
