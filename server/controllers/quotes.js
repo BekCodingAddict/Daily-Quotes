@@ -23,6 +23,6 @@ function postNewQuote(req, res) {
       console.log("New quote has been added!\n quote:", result["dataValues"])
     )
     .catch((error) => console.log(error));
-  res.redirect("/quotes");
+  res.redirect("/home");
 }
 module.exports = { getQuotes, getAddQuote, postNewQuote };
