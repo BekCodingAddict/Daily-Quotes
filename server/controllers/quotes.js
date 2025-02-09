@@ -14,30 +14,36 @@ async function getQuotes(req, res) {
     quotes: quotes,
     user: user,
   });
-
-  // Quote.findAll()
-  //   .then((quotes) => {
-  //     res.render("src/pages/quotes", {
-  //       pageTitle: "📜Quotes",
-  //       activePage: "home",
-  //       quotes: quotes,
-  //       user: req.user,
-  //     });
-  //   })
-  //   .catch((error) => console.log("Failed to Fetch All Quotes! Error:", error));
 }
 
 function getAddQuote(req, res) {
   res.render("src/pages/addQuote", { pageTitle: "📜 Add New Quote" });
 }
 
-function postNewQuote(req, res) {
-  const quoteData = ({ quote, imageUrl, author, category } = req.body);
-  Quote.create(quoteData)
-    .then((result) =>
-      console.log("New quote has been added!\n quote:", result["dataValues"])
-    )
-    .catch((error) => console.log(error));
-  res.redirect("/home");
+async function postNewQuote(req, res) {
+  try {
+    const userId = req.user.userId;
+    const { quote, author, imageUrl, category } = req.body;
+
+    const newQuote = await Quote.create({
+      quote,
+      author,
+      imageUrl,
+      category,
+      userId,
+    })
+      .then((result) =>
+        console.log("New quote has been added!\n quote:", result["dataValues"])
+      )
+      .catch((error) => console.log(error));
+
+    return res.redirect("/home");
+  } catch (error) {
+    console.log("Error:", error);
+    return res.render("src/pages/error", {
+      pageTitle: "⁉ |Error - Something Went Wrong",
+      message: "An unexpected error occurred. Please try again later.",
+    });
+  }
 }
 module.exports = { getQuotes, getAddQuote, postNewQuote };
