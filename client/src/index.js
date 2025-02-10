@@ -18,14 +18,18 @@ closeBtns.forEach((closeBtn) =>
   closeBtn.addEventListener("click", () => {
     addQuoteContainer.style.display = "none";
     optionModal.style.display = "none";
+    const newUrl = window.location.origin + window.location.pathname;
+    history.pushState(null, "", newUrl);
+    window.location.reload();
   })
 );
 
 // QUOTE OPTION BTN LOGIC
 const optionBtn = document.querySelectorAll("#option-btn");
-
 optionBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
     optionModal.style.display = "flex";
   });
 });
+
+//QUOTE OPTION EDIT QUOTE

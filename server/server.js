@@ -19,6 +19,7 @@ app.set("views", path.join(__dirname, "../client"));
 // EXPRESS USES
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "../client")));
 
 app.use(publicRoutes);
