@@ -46,4 +46,33 @@ async function postNewQuote(req, res) {
     });
   }
 }
-module.exports = { getQuotes, getAddQuote, postNewQuote };
+
+async function deleteQuote(req, res) {
+  try {
+    const userId = req.user.userId;
+    const quoteId = req.params.id;
+
+    const quote = await Quote.findOne({ where: { id: quoteId } });
+
+    if (!quote) {
+      return res.status(404).json({ message: "Quote not found!" });
+    }
+
+    if (quote.userId !== userId) {
+      return res
+        .status(403)
+        .json({ message: "Unauthorized! You cannot delete this quote." });
+    }
+
+    await quote.destroy();
+
+    res.status(200).json({ message: "Quote deleted successfully!" });
+  } catch (error) {
+    console.log("Error:", error);
+    return res.render("src/pages/error", {
+      pageTitle: "⁉ |Error - Something Went Wrong",
+      message: "An unexpected error occurred. Please try again later.",
+    });
+  }
+}
+module.exports = { getQuotes, getAddQuote, postNewQuote, deleteQuote };

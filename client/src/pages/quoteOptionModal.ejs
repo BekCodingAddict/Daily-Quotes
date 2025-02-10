@@ -1,4 +1,4 @@
-<section class="option-modal-wrapper">
+<div class="option-modal-wrapper">
   <div class="btn-box"><button id="close-btn">✖</button></div>
   <div
     style="
@@ -14,8 +14,10 @@
         <button type="button">Edit</button>
         <button type="button">Share to...</button>
         <button type="button">About this accaunt</button>
-        <button type="button">Delete</button>
+        <button type="button" onclick="deleteQuote('<%= quote.id %>')">
+          Delete
+        </button>
       </div>
     </div>
   </div>
-</section>
+</div>
