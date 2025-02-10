@@ -1,7 +1,8 @@
 // ADD NEW QUOTE UI MODAL OPEN CLOSE LOGIC
 const addQuoteContainer = document.querySelector(".add-quote-wrapper");
 const sidebarCreate = document.querySelectorAll("#create");
-const closeBtn = document.getElementById("close-btn");
+const closeBtns = document.querySelectorAll("#close-btn");
+const optionModal = document.querySelector(".option-modal-wrapper");
 
 if (window.innerWidth > 600) {
   sidebarCreate[0].addEventListener("click", () => {
@@ -13,17 +14,18 @@ if (window.innerWidth > 600) {
   });
 }
 
-closeBtn.addEventListener("click", () => {
-  addQuoteContainer.style.display = "none";
+closeBtns.forEach((closeBtn) =>
+  closeBtn.addEventListener("click", () => {
+    addQuoteContainer.style.display = "none";
+    optionModal.style.display = "none";
+  })
+);
+
+// QUOTE OPTION BTN LOGIC
+const optionBtn = document.querySelectorAll("#option-btn");
+
+optionBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    optionModal.style.display = "flex";
+  });
 });
-
-//ADD NEW QUOTE FORM SUBMIT LOGIC
-// const addQuoteForm = document.querySelector(".add-quote-wrapper form");
-
-// function handleSubmit(event) {
-//   event.preventDefault();
-//   const confirmed = confirm("Do you want to create this quote?");
-//   if(confirmed)
-// }
-
-// LOGOUT LOGIC

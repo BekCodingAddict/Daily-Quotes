@@ -6,6 +6,7 @@
     <title><%= pageTitle %></title>
     <link rel="stylesheet" href="src/styles/quotes.css" />
     <link rel="stylesheet" href="src/styles/addQuoteModal.css" />
+    <link rel="stylesheet" href="src/styles/quoteOptionModal.css" />
   </head>
 
   <body>
@@ -126,7 +127,7 @@
             <p class="user-name">user-name <span>*</span></p>
             <p>1w</p>
           </div>
-          <div class="option">
+          <div class="option" id="option-btn">
             <img
               class="option-icon"
               src="../../public/option.png"
@@ -254,7 +255,8 @@
       </a>
     </nav>
 
-    <%- include('./addQuoteModal.ejs') %>
+    <%- include('./addQuoteModal.ejs') %> <%- include('./quoteOptionModal.ejs')
+    %>
 
     <script src="src/index.js"></script>
   </body>

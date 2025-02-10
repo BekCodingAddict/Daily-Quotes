@@ -8,16 +8,16 @@
   height: 100%;
   position: absolute;
   z-index: 2;
+  gap: 2rem;
 }
 
-.add-quote-wrapper .show {
+/* .add-quote-wrapper .show {
   display: flex;
-}
+} */
 
 .add-quote-wrapper .btn-box {
   display: flex;
   justify-content: flex-end;
-  padding: 1rem 2rem 1rem 2rem;
   width: 100%;
 }
 
@@ -27,6 +27,7 @@
   font-size: 2rem;
   border: none;
   cursor: pointer;
+  padding: 1rem;
 }
 
 .add-quote-wrapper .form-box {
