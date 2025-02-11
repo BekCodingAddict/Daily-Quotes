@@ -97,4 +97,30 @@ function logout(req, res) {
   res.redirect("/sign-in");
 }
 
-module.exports = { signUpNewUser, signInUser, logout };
+async function getUserProfile(req, res) {
+  try {
+    if (!req.user || !req.user.userId) {
+      return res.redirect("/sign-in");
+    }
+
+    const quotes = await Quote.findAll({
+      where: { userId: req.user.userId },
+    });
+    const user = await User.findOne({ where: { id: req.user.userId } });
+
+    return res.render("src/pages/userProfile", {
+      pageTitle: "🙍‍♂️ | My Profile",
+      activePage: "profile",
+      quotes: quotes,
+      user: user,
+    });
+  } catch (error) {
+    console.log("Error:", error);
+    return res.render("src/pages/error", {
+      pageTitle: "⁉ |Error - Something Went Wrong",
+      message: "An unexpected error occurred. Please try again later.",
+    });
+  }
+}
+
+module.exports = { signUpNewUser, signInUser, logout, getUserProfile };

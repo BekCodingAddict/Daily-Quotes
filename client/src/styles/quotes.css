@@ -391,10 +391,15 @@ body {
     margin-top: 1rem;
   }
 
+  .quote-main p {
+    font-size: 0.8rem;
+  }
+
   .sidebar,
   .suggested {
     display: none !important;
   }
+
   .mobile-header {
     display: flex;
     align-items: center;

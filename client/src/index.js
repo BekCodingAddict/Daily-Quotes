@@ -20,7 +20,7 @@ function timeAgo(date) {
   return "Just now";
 }
 
-// ADD NEW QUOTE UI MODAL OPEN CLOSE LOGIC
+// QUOTE UI MODAL OPEN CLOSE LOGIC
 const addQuoteContainer = document.querySelector(".add-quote-wrapper");
 const sidebarCreate = document.querySelectorAll("#create");
 const closeBtns = document.querySelectorAll("#close-btn");

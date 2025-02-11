@@ -65,7 +65,9 @@ async function editQuote() {
 
         if (response.ok) {
           alert("Quote updated successfully!");
-          window.location.href = "/home"; // Redirect to home after a successful update
+          const newUrl = window.location.origin + window.location.pathname;
+          history.pushState(null, "", newUrl);
+          window.location.reload();
         } else {
           alert("Failed to update quote!");
         }

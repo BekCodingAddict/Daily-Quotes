@@ -1,0 +1,56 @@
+.user-profile-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.user-profile-wrapper .profile-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: auto;
+}
+
+.user-profile-wrapper .profile-image img {
+  width: 10rem; /* Set width */
+  height: 10rem; /* Set height to match width for a square */
+  object-fit: cover; /* Ensures image fills the square */
+  border: 5px solid black; /* Square border */
+  border-radius: 50%;
+}
+
+.user-profile-wrapper .user-infos-box {
+  padding: 1rem;
+}
+
+.user-infos-box h4,
+.user-infos-box h5,
+.user-infos-box p {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.user-infos-box p {
+  font-size: 0.8rem;
+}
+
+.user-infos-box .user-infos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .user-profile-wrapper .profile-image img {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .user-infos-box p {
+    font-size: 0.6rem;
+  }
+}
