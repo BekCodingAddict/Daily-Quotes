@@ -33,6 +33,7 @@ The Daily Quotes Full Stack Node.js App is likely a web application where users 
  ┃ ┃ ┣ 📂 utils          # Helper functions (e.g., date format, text truncation)
  ┃ ┃ ┣ 📜 index.ejs
  ┃ ┃ ┣ 📜 index.js
+ ┣ 📂 errors             # (Errors and Problems History)
  ┣ 📂 server             # (Backend - Node.js + Express)
  ┃ ┣ 📂 config           # Database & environment configurations
  ┃ ┣ 📂 controllers      # Business logic for API routes
