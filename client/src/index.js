@@ -25,11 +25,11 @@ closeBtns.forEach((closeBtn) =>
 );
 
 // QUOTE OPTION BTN LOGIC
-const optionBtn = document.querySelectorAll("#option-btn");
-optionBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    optionModal.style.display = "flex";
-  });
-});
+function handleOptionModal(quoteId) {
+  optionModal.style.display = "flex";
 
-//QUOTE OPTION EDIT QUOTE
+  const params = new URLSearchParams(window.location.search);
+  params.set("quote", quoteId);
+  const newUrl = `${window.location.pathname}?${params.toString()}`;
+  history.pushState(null, "", newUrl);
+}

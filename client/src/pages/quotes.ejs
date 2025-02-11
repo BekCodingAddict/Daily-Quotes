@@ -127,7 +127,11 @@
             <p class="user-name">user-name <span>*</span></p>
             <p>1w</p>
           </div>
-          <div class="option" id="option-btn">
+          <div
+            class="option"
+            id="option-btn"
+            onclick="handleOptionModal('<%= quote.id %>')"
+          >
             <img
               class="option-icon"
               src="../../public/option.png"
@@ -175,8 +179,7 @@
           <p><span>1212</span> likes</p>
         </div>
       </div>
-      <%- include('./quoteOptionModal.ejs',{ quote: quote }) %> <% }) %> <%
-      }else{ %>
+      <% }) %> <% }else{ %>
       <div>No Quote Yet</div>
       <% } %>
     </article>
@@ -256,7 +259,8 @@
       </a>
     </nav>
 
-    <%- include('./addQuoteModal.ejs') %>
+    <%- include('./addQuoteModal.ejs') %> <%- include('./quoteOptionModal.ejs')
+    %>
 
     <script src="src/index.js"></script>
     <script src="src/services/servicesApi.js"></script>

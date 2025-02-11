@@ -1,5 +1,6 @@
 //DELETE QUOTE LOGIG
-async function deleteQuote(quoteId) {
+async function deleteQuote() {
+  const quoteId = new URLSearchParams(window.location.search).get("quote");
   const confirmDelete = confirm("Are you sure you want to delete this quote?");
 
   if (!confirmDelete) return;
@@ -20,13 +21,9 @@ async function deleteQuote(quoteId) {
   }
 }
 
-async function editQuote(quoteId) {
+async function editQuote() {
   //SETTING UP FRONT END URL PARAMS AND QUERY STRING
-  const params = new URLSearchParams(window.location.search);
-  params.set("quote", quoteId);
-  const newUrl = `${window.location.pathname}?${params.toString()}`;
-  history.pushState(null, "", newUrl);
-
+  const quoteId = new URLSearchParams(window.location.search).get("quote");
   const optionModal = document.querySelector(".option-modal-wrapper");
   const addQuoteContainer = document.querySelector(".add-quote-wrapper");
   optionModal.style.display = "none";
@@ -40,56 +37,38 @@ async function editQuote(quoteId) {
   document.querySelector("form #author").value = data.author;
   document.querySelector("form #category").value = data.category;
   document.querySelector("form #add-quote-btn").textContent = "Save";
-}
 
-document
-  .querySelector(".form-box form")
-  .addEventListener("submit", async function (event) {
-    event.preventDefault();
-    const quoteId = new URLSearchParams(window.location.search).get("quote");
+  //WHEN EDIT BUTTON CLICKED
 
-    if (quoteId) {
-      const updatedQuote = {
-        quote: document.querySelector("form #quote").value,
-        imageUrl: document.querySelector("form #image-url").value,
-        author: document.querySelector("form #author").value,
-        category: document.querySelector("form #category").value,
-      };
+  document
+    .querySelector(".form-box form")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+      const quoteId = new URLSearchParams(window.location.search).get("quote");
 
-      const response = await fetch(`/quotes/edit/${quoteId}`, {
-        method: "PUT",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify(updatedQuote),
-        credentials: "include",
-      });
+      if (quoteId) {
+        const updatedQuote = {
+          quote: document.querySelector("form #quote").value,
+          imageUrl: document.querySelector("form #image-url").value,
+          author: document.querySelector("form #author").value,
+          category: document.querySelector("form #category").value,
+        };
 
-      if (response.ok) {
-        alert("Quote updated successfully!");
-        window.location.href = "/home"; // Redirect to home after a successful update
-      } else {
-        alert("Failed to update quote!");
+        const response = await fetch(`/quotes/edit/${quoteId}`, {
+          method: "PUT",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(updatedQuote),
+          credentials: "include",
+        });
+
+        if (response.ok) {
+          alert("Quote updated successfully!");
+          window.location.href = "/home"; // Redirect to home after a successful update
+        } else {
+          alert("Failed to update quote!");
+        }
       }
-    }
-  });
-
-// async function saveEditedQuote(quoteId) {
-//   try {
-//     const response = await fetch(`/quotes/edit/${quoteId}`, {
-//       method: "PUT",
-//       credentials: "include",
-//     });
-//     const data = await response.json();
-//     alert(data.message);
-
-//     if (response.ok) {
-//       location.href = "/home";
-//     }
-//   } catch (error) {
-//     console.log("Failed to delete quote! Error:" + error);
-//     alert("Failed to delete the quote!");
-//   }
-// }
-
-const editMode = true;
+    });
+}
