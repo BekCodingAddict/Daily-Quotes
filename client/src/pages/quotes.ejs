@@ -124,8 +124,8 @@
         <div class="cart-header">
           <div class="user-info">
             <img class="profile-image" src="../../public/profile.png" />
-            <p class="user-name">user-name <span>*</span></p>
-            <p>1w</p>
+            <p class="user-name"><%= user.userName %><span>*</span></p>
+            <p id="quote-createdAt" createdAt="<%= quote.createdAt %>"></p>
           </div>
           <div
             class="option"
@@ -189,8 +189,8 @@
         <a href="profile">
           <img src="../../public/profile.png" />
           <div>
-            <p class="user-name">user-name</p>
-            <p>Name</p>
+            <p class="user-name"><%= user.userName %></p>
+            <p><%= user.fullName %></p>
           </div>
         </a>
         <a class="log-out" href="/logout">Log out</a>
@@ -201,8 +201,8 @@
             <a href="profile">
               <img src="../../public/profile.png" />
               <div>
-                <p class="user-name">user-name</p>
-                <p>Name</p>
+                <p class="user-name">john</p>
+                <p>John Doe</p>
               </div></a
             >
             <p class="log-out">Follow</p>
@@ -211,8 +211,8 @@
             <a href="profile">
               <img src="../../public/profile.png" />
               <div>
-                <p class="user-name">user-name</p>
-                <p>Name</p>
+                <p class="user-name">markus</p>
+                <p>Markus Dare</p>
               </div></a
             >
             <p class="log-out">Follow</p>
