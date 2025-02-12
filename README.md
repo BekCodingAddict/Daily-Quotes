@@ -48,6 +48,21 @@
  ┣ 📜 README.md          # Documentation
  ┣ 📜 package.json       # Backend dependencies
 ```
+## UI Screenshots
+### 🖥 Desktop & 💻 Laptop UI
+![allUI](https://github.com/user-attachments/assets/795bbbc9-5436-479a-8ac8-60d9c62ca73e)
+![Desktop](https://github.com/user-attachments/assets/827e8c89-8e30-4560-830a-242002fdda68)
+
+
+### 🎴 iPadmin UI 
+![image](https://github.com/user-attachments/assets/b0ba7b8a-3b74-4356-8732-f91874204a5d)
+
+### 📱 Mobile UI
+![MobileUI (2)](https://github.com/user-attachments/assets/f18a703f-47e9-4e83-86cf-52be695acced)
+![image](https://github.com/user-attachments/assets/a05d9abb-eb9b-461c-b4a8-0340fffb9492)
+![image](https://github.com/user-attachments/assets/a2270035-515d-4d43-9fcb-b4dd9251aeb4)
+
+
 
 
 ## 🎯 Possible Future Enhancements 
