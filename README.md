@@ -1,5 +1,6 @@
 # Daily-Quotes
-The Daily Quotes Full Stack Node.js App is likely a web application where users can view, save, or share inspirational quotes daily. It is built using a full-stack approach, with Node.js handling the back-end, and a front-end  plain IJS/CSS/JavaScript.
+ "Daily Quote is a full-stack web app that delivers inspiring quotes every day. Users can browse,send,comment and save their favorite quotes, and even submit their own. Built with EJS, Node.js, Express, and MySQL.",
+
 
 ## 🚀 Key Features of a Daily Quotes App
 1. Quote of the Day – Display a new quote daily, fetched from an API or database.
