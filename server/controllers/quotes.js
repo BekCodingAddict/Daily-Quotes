@@ -3,17 +3,31 @@ const Quote = require("../models/quote");
 const User = require("../models/user");
 
 async function getQuotes(req, res) {
-  const quotes = await Quote.findAll({
-    where: { userId: req.user.userId },
-  });
-  const user = await User.findOne({ where: { id: req.user.userId } });
+  try {
+    if (!req.user || !req.user.userId) {
+      return res.status(401).json({ message: "Unauthorized! Please log in." });
+    }
+    const user = await User.findOne({ where: { id: req.user.userId } });
+    const quotes = await Quote.findAll();
+    const users = await User.findAll();
+    const suggestedUsers = users.filter(
+      (suggestedUser) => suggestedUser.id !== user.id
+    );
 
-  return res.render("src/pages/quotes", {
-    pageTitle: "📜Quotes",
-    activePage: "home",
-    quotes: quotes,
-    user: user,
-  });
+    return res.render("src/pages/quotes", {
+      pageTitle: "📜Quotes",
+      activePage: "home",
+      quotes: quotes,
+      user: user,
+      suggestedUsers,
+    });
+  } catch (error) {
+    console.log("Error:", error);
+    return res.render("src/pages/error", {
+      pageTitle: "⁉ |Error - Something Went Wrong",
+      message: "An unexpected error occurred. Please try again later.",
+    });
+  }
 }
 
 function getAddQuote(req, res) {
@@ -131,6 +145,7 @@ async function getQuote(req, res) {
     });
   }
 }
+
 module.exports = {
   getQuotes,
   getAddQuote,

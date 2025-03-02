@@ -1,8 +1,10 @@
 const Quote = require("../models/quote");
 const User = require("../models/user");
+const Followers = require("../models/followers");
 const { getUserByEmail } = require("../utils/helper");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { where } = require("sequelize");
 require("dotenv").config();
 
 async function signUpNewUser(req, res) {
@@ -107,12 +109,25 @@ async function getUserProfile(req, res) {
       where: { userId: req.user.userId },
     });
     const user = await User.findOne({ where: { id: req.user.userId } });
+    const users = await User.findAll();
+    const suggestedUsers = users.filter(
+      (suggestedUser) => suggestedUser.id !== user.id
+    );
+    const followings = await Followers.findAll({
+      where: { followerId: req.user.userId },
+    });
+    const followers = await Followers.findAll({
+      where: { followingId: req.user.userId },
+    });
 
     return res.render("src/pages/userProfile", {
       pageTitle: "🙍‍♂️ | My Profile",
       activePage: "profile",
       quotes: quotes,
       user: user,
+      suggestedUsers,
+      followings,
+      followers,
     });
   } catch (error) {
     console.log("Error:", error);
@@ -123,4 +138,43 @@ async function getUserProfile(req, res) {
   }
 }
 
-module.exports = { signUpNewUser, signInUser, logout, getUserProfile };
+async function postNewFollower(req, res) {
+  try {
+    if (!req.user.userId || !req.params.id) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing followerId or followingId",
+        data: null,
+      });
+    }
+    const existingFollow = await Followers.findOne({
+      where: { followerId: req.user.userId, followingId: req.params.id },
+    });
+
+    if (existingFollow) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Already following this user!" });
+    }
+
+    await Followers.create({
+      followerId: req.user.userId,
+      followingId: req.params.id,
+    });
+
+    return res
+      .status(201)
+      .json({ success: true, message: "Followed successfully!" });
+  } catch (error) {
+    console.error("Follow error:", error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+module.exports = {
+  signUpNewUser,
+  signInUser,
+  logout,
+  getUserProfile,
+  postNewFollower,
+};

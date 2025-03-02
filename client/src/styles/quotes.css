@@ -289,6 +289,13 @@ body {
   cursor: pointer;
 }
 
+.no-quote-yet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
 /* MOBILE UI */
 .movile-header {
   display: block;
@@ -433,6 +440,9 @@ body {
   .mobile-nav a:hover {
     background-color: rgba(184, 184, 184, 0.3);
     border-radius: 5px;
+  }
+  .no-quote-yet {
+    margin-top: 10rem;
   }
 }
 

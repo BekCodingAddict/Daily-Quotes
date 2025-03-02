@@ -74,3 +74,22 @@ async function editQuote() {
       }
     });
 }
+
+async function follow(userId) {
+  try {
+    const response = await fetch(`/user/follow/${userId}`, {
+      method: "POST",
+      credentials: "include",
+    });
+
+    const followers = await response.json();
+    alert(followers.message);
+    if (response.ok) {
+      alert(followers.message);
+      location.reload();
+    }
+  } catch (error) {
+    console.log("Failed to follow user! Error:" + error);
+    alert("Failed to follow the user!");
+  }
+}

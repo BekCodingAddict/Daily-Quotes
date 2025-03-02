@@ -4,6 +4,7 @@
   width: 100%;
   gap: 2rem;
   border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+  max-width: 60rem;
 }
 
 .user-profile-wrapper .profile-image {

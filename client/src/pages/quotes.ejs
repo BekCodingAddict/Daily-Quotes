@@ -102,7 +102,7 @@
               <p>Create</p></a
             >
           </li>
-          <li>
+          <li class="<%= activePage==='profile' && 'active-link' %>">
             <a href="profile">
               <img src="../../public/profile.png" />
               <p>Profile</p></a
@@ -180,7 +180,9 @@
         </div>
       </div>
       <% }) %> <% }else{ %>
-      <div>No Quote Yet</div>
+      <div class="no-quote-yet">
+        <h3>📑 No Quote Yet</h3>
+      </div>
       <% } %>
     </article>
 
@@ -196,48 +198,22 @@
         <a class="log-out" href="/logout">Log out</a>
       </div>
       <div class="suggested-users">
+        <% if( suggestedUsers.length>0){ %>
         <ul>
+          <% suggestedUsers.forEach(suggestedUser=>{ %>
           <li>
             <a href="profile">
               <img src="../../public/profile.png" />
               <div>
-                <p class="user-name">john</p>
-                <p>John Doe</p>
+                <p class="user-name"><%= suggestedUser.userName %></p>
+                <p><%= suggestedUser.fullName %></p>
               </div></a
             >
             <p class="log-out">Follow</p>
           </li>
-          <li>
-            <a href="profile">
-              <img src="../../public/profile.png" />
-              <div>
-                <p class="user-name">markus</p>
-                <p>Markus Dare</p>
-              </div></a
-            >
-            <p class="log-out">Follow</p>
-          </li>
-          <li>
-            <a href="profile">
-              <img src="../../public/profile.png" />
-              <div>
-                <p class="user-name">user-name</p>
-                <p>Name</p>
-              </div></a
-            >
-            <p class="log-out">Follow</p>
-          </li>
-          <li>
-            <a href="profile">
-              <img src="../../public/profile.png" />
-              <div>
-                <p class="user-name">user-name</p>
-                <p>Name</p>
-              </div></a
-            >
-            <p class="log-out">Follow</p>
-          </li>
+          <% }) %>
         </ul>
+        <% } %>
       </div>
     </aside>
 

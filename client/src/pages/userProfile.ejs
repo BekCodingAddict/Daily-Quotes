@@ -67,7 +67,7 @@
       </div>
       <div class="navigation">
         <ul>
-          <li class="<%= activePage==='home' && 'active-link' %>">
+          <li>
             <a href="home"
               ><img src="../../public/home.png" />
               <p>Home</p></a
@@ -103,7 +103,7 @@
               <p>Create</p></a
             >
           </li>
-          <li>
+          <li class="<%= activePage==='profile' && 'active-link' %>">
             <a href="profile">
               <img src="../../public/profile.png" />
               <p>Profile</p></a
@@ -129,10 +129,10 @@
         <div class="user-infos-box">
           <h4><%= user.userName %></h4>
           <div class="user-infos">
-            <p><span>X</span> quotes</p>
+            <p><span><%= quotes.length %></span> quotes</p>
 
-            <p><span>X</span> followers</p>
-            <p><span>X</span> following</p>
+            <p><span><%= followers.length %></span> followers</p>
+            <p><span><%= followings.length %></span> following</p>
           </div>
           <h5><%= user.fullName %></h5>
           <p>
@@ -208,7 +208,9 @@
         </div>
       </div>
       <% }) %> <% }else{ %>
-      <div>No Quote Yet</div>
+      <div class="no-quote-yet">
+        <h3>📑 No Quote Yet</h3>
+      </div>
       <% } %>
     </article>
 
@@ -224,48 +226,30 @@
         <a class="log-out" href="/logout">Log out</a>
       </div>
       <div class="suggested-users">
+        <% if( suggestedUsers.length>0){ %>
         <ul>
+          <% suggestedUsers.forEach(suggestedUser=>{ %>
           <li>
             <a href="profile">
               <img src="../../public/profile.png" />
               <div>
-                <p class="user-name">john</p>
-                <p>John Doe</p>
+                <p class="user-name"><%= suggestedUser.userName %></p>
+                <p><%= suggestedUser.fullName %></p>
               </div></a
             >
-            <p class="log-out">Follow</p>
-          </li>
-          <li>
-            <a href="profile">
-              <img src="../../public/profile.png" />
-              <div>
-                <p class="user-name">markus</p>
-                <p>Markus Dare</p>
-              </div></a
+            <p
+              type="button"
+              onclick="follow('<%= suggestedUser.id %>')"
+              class="log-out"
             >
-            <p class="log-out">Follow</p>
+              <% let isFollowing =
+              followings.some((followingUser)=>followingUser.id===suggestedUser.id);
+              %> <%= isFollowing ? "Unfollow" : "Follow" %>
+            </p>
           </li>
-          <li>
-            <a href="profile">
-              <img src="../../public/profile.png" />
-              <div>
-                <p class="user-name">user-name</p>
-                <p>Name</p>
-              </div></a
-            >
-            <p class="log-out">Follow</p>
-          </li>
-          <li>
-            <a href="profile">
-              <img src="../../public/profile.png" />
-              <div>
-                <p class="user-name">user-name</p>
-                <p>Name</p>
-              </div></a
-            >
-            <p class="log-out">Follow</p>
-          </li>
+          <% }) %>
         </ul>
+        <% } %>
       </div>
     </aside>
 
