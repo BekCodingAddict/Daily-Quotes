@@ -1,6 +1,7 @@
-const { where } = require("sequelize");
+const { where, Op } = require("sequelize");
 const Quote = require("../models/quote");
 const User = require("../models/user");
+const Followers = require("../models/followers");
 
 async function getQuotes(req, res) {
   try {
@@ -8,18 +9,29 @@ async function getQuotes(req, res) {
       return res.status(401).json({ message: "Unauthorized! Please log in." });
     }
     const user = await User.findOne({ where: { id: req.user.userId } });
-    const quotes = await Quote.findAll();
+
+    const quotes = await Quote.findAll({ order: [["createdAt", "DESC"]] });
     const users = await User.findAll();
     const suggestedUsers = users.filter(
       (suggestedUser) => suggestedUser.id !== user.id
     );
+    const followings = await Followers.findAll({
+      where: { followerId: req.user.userId },
+    });
+
+    const followers = await Followers.findAll({
+      where: { followingId: req.user.userId },
+    });
 
     return res.render("src/pages/quotes", {
       pageTitle: "📜Quotes",
       activePage: "home",
       quotes: quotes,
       user: user,
+      users,
       suggestedUsers,
+      followers,
+      followings,
     });
   } catch (error) {
     console.log("Error:", error);

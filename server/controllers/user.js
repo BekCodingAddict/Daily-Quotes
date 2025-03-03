@@ -116,6 +116,7 @@ async function getUserProfile(req, res) {
     const followings = await Followers.findAll({
       where: { followerId: req.user.userId },
     });
+
     const followers = await Followers.findAll({
       where: { followingId: req.user.userId },
     });
@@ -152,9 +153,10 @@ async function postNewFollower(req, res) {
     });
 
     if (existingFollow) {
+      await existingFollow.destroy();
       return res
-        .status(400)
-        .json({ success: false, message: "Already following this user!" });
+        .status(200)
+        .json({ success: true, message: "User successfully unfollowed!" });
     }
 
     await Followers.create({

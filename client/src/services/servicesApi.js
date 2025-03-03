@@ -83,9 +83,7 @@ async function follow(userId) {
     });
 
     const followers = await response.json();
-    alert(followers.message);
     if (response.ok) {
-      alert(followers.message);
       location.reload();
     }
   } catch (error) {

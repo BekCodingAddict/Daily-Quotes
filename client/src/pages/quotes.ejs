@@ -124,7 +124,9 @@
         <div class="cart-header">
           <div class="user-info">
             <img class="profile-image" src="../../public/profile.png" />
+            <% users.forEach(user=>{ %> <% if(quote.userId===user.id){ %>
             <p class="user-name"><%= user.userName %><span>*</span></p>
+            <% } %> <% }) %>
             <p id="quote-createdAt" createdAt="<%= quote.createdAt %>"></p>
           </div>
           <div
@@ -209,14 +211,21 @@
                 <p><%= suggestedUser.fullName %></p>
               </div></a
             >
-            <p class="log-out">Follow</p>
+            <p
+              type="button"
+              onclick="follow('<%= suggestedUser.id %>')"
+              class="log-out"
+            >
+              <% let isFollowing =
+              followings.some((followingUser)=>followingUser.followingId===suggestedUser.id);
+              %> <%= isFollowing ? "Following" : "Follow" %>
+            </p>
           </li>
           <% }) %>
         </ul>
         <% } %>
       </div>
     </aside>
-
     <nav class="mobile-nav">
       <a href="home"
         ><img class="profile-image" src="../../public/home.png" />

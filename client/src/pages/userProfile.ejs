@@ -237,14 +237,15 @@
                 <p><%= suggestedUser.fullName %></p>
               </div></a
             >
+            <% let isFollowing =
+            followings.some((followingUser)=>followingUser.followingId===suggestedUser.id);
+            %>
             <p
               type="button"
               onclick="follow('<%= suggestedUser.id %>')"
               class="log-out"
             >
-              <% let isFollowing =
-              followings.some((followingUser)=>followingUser.id===suggestedUser.id);
-              %> <%= isFollowing ? "Unfollow" : "Follow" %>
+              <%= isFollowing ? "Following" : "Follow" %>
             </p>
           </li>
           <% }) %>
