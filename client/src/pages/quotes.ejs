@@ -190,7 +190,7 @@
 
     <aside class="suggested">
       <div class="my-profile">
-        <a href="profile">
+        <a href="/<%= user.userName %>">
           <img src="../../public/profile.png" />
           <div>
             <p class="user-name"><%= user.userName %></p>
@@ -204,21 +204,22 @@
         <ul>
           <% suggestedUsers.forEach(suggestedUser=>{ %>
           <li>
-            <a href="profile">
+            <a href="/<%= suggestedUser.userName %>">
               <img src="../../public/profile.png" />
               <div>
                 <p class="user-name"><%= suggestedUser.userName %></p>
                 <p><%= suggestedUser.fullName %></p>
-              </div></a
-            >
+              </div>
+              <% let isFollowing =
+              followings.some((followingUser)=>followingUser.followingId===suggestedUser.id);
+              %>
+            </a>
             <p
               type="button"
               onclick="follow('<%= suggestedUser.id %>')"
               class="log-out"
             >
-              <% let isFollowing =
-              followings.some((followingUser)=>followingUser.followingId===suggestedUser.id);
-              %> <%= isFollowing ? "Following" : "Follow" %>
+              <%= isFollowing ? "Following" : "Follow" %>
             </p>
           </li>
           <% }) %>
@@ -226,6 +227,7 @@
         <% } %>
       </div>
     </aside>
+
     <nav class="mobile-nav">
       <a href="home"
         ><img class="profile-image" src="../../public/home.png" />

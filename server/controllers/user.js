@@ -134,7 +134,7 @@ async function getUserProfile(req, res) {
     const currentUser = await User.findOne({ where: { id: req.user.userId } });
 
     return res.render(`src/pages/userProfile`, {
-      pageTitle: "🙍‍♂️ | User Profile",
+      pageTitle: "🙍‍♂️ | Profile",
       activePage: "profile",
       quotes: quotes,
       currentUser,
@@ -186,10 +186,57 @@ async function postNewFollower(req, res) {
   }
 }
 
+async function getEditProfile(req, res) {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ message: "Unauthorized! Please log in." });
+    }
+
+    const currentUser = await User.findOne({ where: { id: req.user.userId } });
+
+    if (!currentUser) {
+      console.log("Error:", error);
+      return res.render("src/pages/error", {
+        pageTitle: "⁉ |Error - Something Went Wrong",
+        message: "User not found!",
+      });
+    }
+    const users = await User.findAll();
+    const suggestedUsers = users.filter(
+      (suggestedUser) => suggestedUser.id !== currentUser.id
+    );
+
+    const followings = await Followers.findAll({
+      where: { followerId: currentUser.id },
+    });
+
+    const followers = await Followers.findAll({
+      where: { followingId: currentUser.id },
+    });
+
+    return res.render(`src/pages/editProfile`, {
+      pageTitle: "🙍‍♂️ | Edit Profile",
+      activePage: "profile/edit/",
+      currentUser,
+      user: currentUser,
+      suggestedUsers,
+      followings,
+      followers,
+    });
+  } catch (error) {
+    console.log("Error:", error);
+    return res.render("src/pages/error", {
+      pageTitle: "⁉ |Error - Something Went Wrong",
+      message: "An unexpected error occurred. Please try again later.",
+    });
+  }
+}
+
 module.exports = {
   signUpNewUser,
   signInUser,
   logout,
   getUserProfile,
   postNewFollower,
+  getEditProfile,
 };
