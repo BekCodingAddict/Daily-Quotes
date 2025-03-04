@@ -74,7 +74,7 @@
             >
           </li>
           <li>
-            <a id="search" href=""
+            <a id="search" href="/search"
               ><img src="../../public/search .png" />
               <p>Search</p></a
             >
@@ -104,7 +104,7 @@
             >
           </li>
           <li class="<%= activePage==='profile' && 'active-link' %>">
-            <a href="profile">
+            <a href="/<%= currentUser.userName %>">
               <img src="../../public/profile.png" />
               <p>Profile</p></a
             >
@@ -216,11 +216,11 @@
 
     <aside class="suggested">
       <div class="my-profile">
-        <a href="profile">
+        <a href="/<%= currentUser.userName %>">
           <img src="../../public/profile.png" />
           <div>
-            <p class="user-name"><%= user.userName %></p>
-            <p><%= user.fullName %></p>
+            <p class="user-name"><%= currentUser.userName %></p>
+            <p><%= currentUser.fullName %></p>
           </div>
         </a>
         <a class="log-out" href="/logout">Log out</a>
@@ -230,16 +230,16 @@
         <ul>
           <% suggestedUsers.forEach(suggestedUser=>{ %>
           <li>
-            <a href="profile">
+            <a href="/<%= suggestedUser.userName %>">
               <img src="../../public/profile.png" />
               <div>
                 <p class="user-name"><%= suggestedUser.userName %></p>
                 <p><%= suggestedUser.fullName %></p>
-              </div></a
-            >
-            <% let isFollowing =
-            followings.some((followingUser)=>followingUser.followingId===suggestedUser.id);
-            %>
+              </div>
+              <% let isFollowing =
+              followings.some((followingUser)=>followingUser.followingId===suggestedUser.id);
+              %>
+            </a>
             <p
               type="button"
               onclick="follow('<%= suggestedUser.id %>')"

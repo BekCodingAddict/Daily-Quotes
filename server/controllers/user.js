@@ -101,30 +101,43 @@ function logout(req, res) {
 
 async function getUserProfile(req, res) {
   try {
-    if (!req.user || !req.user.userId) {
-      return res.redirect("/sign-in");
+    if (!req.user || !req.params.userName) return res.redirect("/sign-in");
+
+    const user = await User.findOne({
+      where: { userName: req.params.userName },
+    });
+
+    if (!user) {
+      console.log("Error:", error);
+      return res.render("src/pages/error", {
+        pageTitle: "⁉ |Error - Something Went Wrong",
+        message: "User not found!",
+      });
     }
 
     const quotes = await Quote.findAll({
-      where: { userId: req.user.userId },
+      where: { userId: user.id },
     });
-    const user = await User.findOne({ where: { id: req.user.userId } });
     const users = await User.findAll();
     const suggestedUsers = users.filter(
       (suggestedUser) => suggestedUser.id !== user.id
     );
+
     const followings = await Followers.findAll({
-      where: { followerId: req.user.userId },
+      where: { followerId: user.id },
     });
 
     const followers = await Followers.findAll({
-      where: { followingId: req.user.userId },
+      where: { followingId: user.id },
     });
 
-    return res.render("src/pages/userProfile", {
-      pageTitle: "🙍‍♂️ | My Profile",
+    const currentUser = await User.findOne({ where: { id: req.user.userId } });
+
+    return res.render(`src/pages/userProfile`, {
+      pageTitle: "🙍‍♂️ | User Profile",
       activePage: "profile",
       quotes: quotes,
+      currentUser,
       user: user,
       suggestedUsers,
       followings,
