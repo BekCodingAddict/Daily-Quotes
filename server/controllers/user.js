@@ -116,6 +116,7 @@ async function getUserProfile(req, res) {
 
     const quotes = await Quote.findAll({
       where: { userId: user.id },
+      order: [["createdAt", "DESC"]],
     });
     const users = await User.findAll();
     const suggestedUsers = users.filter(

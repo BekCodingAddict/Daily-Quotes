@@ -142,7 +142,15 @@
           </div>
         </div>
         <div class="quote-main">
+          <% if(quote.quote){ %>
           <p><%= quote.quote %></p>
+          <% }else{ %>
+          <img
+            style="width: 100%"
+            src="<%= quote.imageUrl %>"
+            alt="Quote Image"
+          />
+          <% } %>
           <h5><span>- </span> <%=quote.author %></h5>
         </div>
         <div class="quote-footer">
@@ -238,7 +246,7 @@
       <a id="create">
         <img class="profile-image" src="../../public/adding.png" />
       </a>
-      <a href="profile">
+      <a href="/<%= user.userName %>">
         <img class="profile-image" src="../../public/profile.png" />
       </a>
       <a href="more">
