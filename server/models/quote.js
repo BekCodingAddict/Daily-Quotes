@@ -1,5 +1,4 @@
 const Sequelize = require("sequelize");
-
 const sequelize = require("../config/database");
 
 const Quote = sequelize.define("quotes", {
@@ -12,13 +11,14 @@ const Quote = sequelize.define("quotes", {
   userId: {
     type: Sequelize.INTEGER,
     allowNull: false,
-    reference: {
+    references: {
+      // ✅ Fixed "reference" typo
       model: "users",
       key: "id",
     },
     onDelete: "CASCADE",
   },
-  quote: Sequelize.STRING,
+  quote: Sequelize.TEXT,
   author: Sequelize.STRING,
   imageUrl: {
     type: Sequelize.STRING,

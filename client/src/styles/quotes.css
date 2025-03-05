@@ -156,6 +156,14 @@ body {
   gap: 0.5rem;
 }
 
+.user-info img {
+  width: 2rem; /* Set width */
+  height: 2rem; /* Set height to match width for a square */
+  object-fit: cover; /* Ensures image fills the square */
+  border: 1px solid black; /* Square border */
+  border-radius: 50%;
+}
+
 .cart-header .option {
   cursor: pointer;
   padding-left: 0.5rem;

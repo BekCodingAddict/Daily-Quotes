@@ -122,9 +122,11 @@
     <article class="content">
       <div class="user-profile-wrapper">
         <div class="profile-image">
-          <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHDRlp-KGr_M94k_oor4Odjn2UzbAS7n1YoA&s"
-          />
+          <% if(user.imageUrl){ %>
+          <img src="<%= user.imageUrl %>" />
+          <% }else{ %>
+          <img src="../../public/profile.png" />
+          <% } %>
         </div>
         <div class="user-infos-box">
           <div class="box">
@@ -150,12 +152,15 @@
           </div>
           <h5><%= user.fullName %></h5>
           <p>
-            Bio:
-            <span
-              >Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Delectus, consectetur voluptate. Blanditiis, quos suscipit quasi
-              facere aut voluptates, at velit nisi a laudantium beatae, officia
-              recusandae perferendis? Recusandae, debitis vero?</span
+            <span style="font-weight: 600">Bio:</span>
+            <span style="color: rgba(0, 0, 0, 0.7)"
+              ><%= currentUser.bio %></span
+            >
+          </p>
+          <p>
+            <span>🔗</span
+            ><a href="<%= currentUser.link %>" target="_blank"
+              ><%= currentUser.link %></a
             >
           </p>
         </div>
@@ -165,7 +170,7 @@
       <div class="quote-cart">
         <div class="cart-header">
           <div class="user-info">
-            <img class="profile-image" src="../../public/profile.png" />
+            <img class="profile-image" src="<%= currentUser.imageUrl %>" />
             <p class="user-name"><%= user.userName %><span>*</span></p>
             <p id="quote-createdAt" createdAt="<%= quote.createdAt %>"></p>
           </div>

@@ -123,8 +123,8 @@
       <div class="quote-cart">
         <div class="cart-header">
           <div class="user-info">
-            <img class="profile-image" src="../../public/profile.png" />
             <% users.forEach(user=>{ %> <% if(quote.userId===user.id){ %>
+            <img class="profile-image" src="<%= user.imageUrl %>" />
             <p class="user-name"><%= user.userName %><span>*</span></p>
             <% } %> <% }) %>
             <p id="quote-createdAt" createdAt="<%= quote.createdAt %>"></p>

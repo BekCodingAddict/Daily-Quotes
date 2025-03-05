@@ -108,7 +108,6 @@ async function getUserProfile(req, res) {
     });
 
     if (!user) {
-      console.log("Error:", error);
       return res.render("src/pages/error", {
         pageTitle: "⁉ |Error - Something Went Wrong",
         message: "User not found!",
@@ -232,6 +231,58 @@ async function getEditProfile(req, res) {
   }
 }
 
+async function postEditProfile(req, res) {
+  try {
+    if (!req.user.userId || !req.params.userName) {
+      return res.status(401).json({ message: "Unauthorized! Please log in." });
+    }
+
+    const currentUser = await User.findOne({ where: { id: req.user.userId } });
+    console.log(req.body);
+    if (req.body.password === "") {
+      await currentUser.update({
+        imageUrl: req.body.imageUrl,
+        link: req.body.link,
+        userName: req.body.userName,
+        fullName: req.body.fullName,
+        bio: req.body.bio,
+        email: req.body.email,
+        password: currentUser.password,
+      });
+      return res.status(200).redirect(`/${currentUser.userName}`);
+    }
+
+    const isMatch = await bcrypt.compare(
+      req.body.password,
+      currentUser.password
+    );
+    if (!isMatch) {
+      return res
+        .status(401)
+        .json({ success: false, message: "Password is incorrect!" });
+    }
+
+    const newHashedPassword = await bcrypt.hash(req.body.newPassword, 10);
+    await currentUser.update({
+      imageUrl: req.body.imageUrl,
+      link: req.body.link,
+      userName: req.body.userName,
+      fullName: req.body.fullName,
+      bio: req.body.bio,
+      email: req.body.email,
+      password: newHashedPassword,
+    });
+    return res.status(200).redirect(`/${currentUser.userName}`);
+  } catch (error) {
+    console.log("Error:", error);
+    return res.render("src/pages/error", {
+      pageTitle: "⁉ |Error - Something Went Wrong",
+      message:
+        "An unexpected error occurred. Please try again later. Error" + error,
+    });
+  }
+}
+
 module.exports = {
   signUpNewUser,
   signInUser,
@@ -239,4 +290,5 @@ module.exports = {
   getUserProfile,
   postNewFollower,
   getEditProfile,
+  postEditProfile,
 };

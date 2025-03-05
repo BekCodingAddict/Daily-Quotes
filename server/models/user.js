@@ -26,10 +26,22 @@ const User = sequelize.define("users", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  link: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  bio: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
+  imageUrl: {
+    type: Sequelize.STRING,
+    allowNull: true,
+  },
 });
 
-//One to Many:A user can have multiple quotes
+// One-to-Many: A user can have multiple quotes
 User.hasMany(Quote, { foreignKey: "userId", onDelete: "CASCADE" });
-Quote.belongsTo(User, { foreignKey: "id" });
+Quote.belongsTo(User, { foreignKey: "userId" }); // ✅ Fixed the foreign key
 
 module.exports = User;
